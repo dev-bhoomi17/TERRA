@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#f5f5ed">
+    <meta name="description" content="TERRA — Intelligent renewable energy monitoring dashboard.">
+
+    <title>TERRA — Energy Intelligence</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <a href="#" class="brand">
+                <span class="brand-symbol">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <path d="M20 3L37 13V27L20 37L3 27V13L20 3Z"
+                              stroke="currentColor" stroke-width="2.5"/>
+                        <path d="M20 9L28 14V23L20 29L12 23V14L20 9Z"
+                              fill="currentColor"/>
+                    </svg>
+                </span>
+                <span class="brand-name">terra<span>.</span></span>
+            </a>
+
+            <div class="workspace-label">WORKSPACE</div>
+
+            <nav class="side-nav">
+
+                <a href="#overview" class="nav-link active">
+                    <span class="nav-icon">◈</span>
+                    <span>Overview</span>
+                    <span class="nav-indicator"></span>
+                </a>
+
+                <a href="#production" class="nav-link">
+                    <span class="nav-icon">⌁</span>
+                    <span>Production</span>
+                </a>
+
+                <a href="#stations" class="nav-link">
+                    <span class="nav-icon">▦</span>
+                    <span>Solar stations</span>
+                </a>
+
+                <a href="#energy-flow" class="nav-link">
+                    <span class="nav-icon">⇄</span>
+                    <span>Energy flow</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="eco-card">
+                    <div class="eco-icon">✳</div>
+                    <p class="eco-title">Small steps.<br>Big impact.</p>
+                    <p class="eco-description">
+                        Every unit of clean energy makes a difference.
+                    </p>
+                    <div class="eco-decoration">↗</div>
+                </div>
+
+                <div class="sidebar-profile">
+                    <div class="profile-avatar">T</div>
+                    <div class="profile-info">
+                        <strong>Terra Energy</strong>
+                        <span>Admin workspace</span>
+                    </div>
+                    <span class="profile-menu">···</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content" id="overview">
+
+            <!-- TOP BAR -->
+            <header class="topbar">
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <span>/</span>
+                    <strong>Overview</strong>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <div class="live-status">
+                        <span class="live-dot"></span>
+                        All systems operational
+                    </div>
+
+                    <button class="icon-button" id="refreshButton"
+                            aria-label="Refresh dashboard" title="Refresh dashboard">
+                        ↻
+                    </button>
+
+                    <div class="topbar-date" id="currentDate">
+                        Loading date...
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE INTRO -->
+            <section class="page-intro">
+
+                <div>
+                    <div class="eyebrow">
+                        <span class="eyebrow-line"></span>
+                        ENERGY INTELLIGENCE / 01
+                    </div>
+
+                    <h1>Powering a <span>brighter</span><br>tomorrow.</h1>
+
+                    <p class="intro-description">
+                        A real-time look at your renewable energy ecosystem.
+                        Here's what your network is doing today.
+                    </p>
+                </div>
+
+                <div class="intro-tag">
+                    <span class="sun-icon">☼</span>
+                    <div>
+                        <strong>Clean energy first</strong>
+                        <span>Planet-positive operations</span>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- ENERGY HERO -->
+            <section class="hero-grid">
+
+                <article class="generation-card">
+
+                    <div class="card-topline">
+                        <div>
+                            <span class="section-label">TOTAL GENERATION</span>
+                            <span class="card-subtitle">Network output / Today</span>
+                        </div>
+
+                        <span class="live-pill">
+                            <span></span> LIVE
+                        </span>
+                    </div>
+
+                    <div class="generation-content">
+
+                        <div class="generation-number">
+                            <div>
+                                <span class="main-value" id="currentOutput">842</span>
+                                <span class="value-unit">kWh</span>
+                            </div>
+
+                            <div class="generation-change">
+                                <span>↗</span> 12.8%
+                            </div>
+
+                            <p>vs. previous day</p>
+                        </div>
+
+                        <div class="energy-gauge" id="energyGauge">
+
+                            <svg viewBox="0 0 220 220" class="gauge-svg"
+                                 role="img" aria-label="Energy target progress">
+
+                                <circle class="gauge-track"
+                                        cx="110" cy="110" r="91"/>
+
+                                <circle class="gauge-progress"
+                                        cx="110" cy="110" r="91"/>
+
+                            </svg>
+
+                            <div class="gauge-center">
+                                <span class="gauge-symbol">✳</span>
+                                <strong id="gaugePercent">76%</strong>
+                                <span>of daily goal</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="generation-footer">
+
+                        <div>
+                            <span class="footer-dot lime"></span>
+                            <span>Daily target</span>
+                            <strong>1,100 kWh</strong>
+                        </div>
+
+                        <div>
+                            <span class="footer-dot dark"></span>
+                            <span>Remaining</span>
+                            <strong>258 kWh</strong>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- SUNLIGHT PANEL -->
+                <article class="sunlight-card">
+
+                    <div class="sunlight-top">
+                        <span class="section-label">SOLAR CONDITIONS</span>
+                        <span class="weather-symbol">☼</span>
+                    </div>
+
+                    <div class="sun-art">
+                        <div class="sun-orbit orbit-one"></div>
+                        <div class="sun-orbit orbit-two"></div>
+                        <div class="sun-core"></div>
+                        <div class="sun-ray ray-one"></div>
+                        <div class="sun-ray ray-two"></div>
+                        <div class="sun-ray ray-three"></div>
+                        <div class="sun-ray ray-four"></div>
+                    </div>
+
+                    <div class="sunlight-reading">
+                        <span>Sunlight intensity</span>
+                        <strong>86<span>%</span></strong>
+                        <p>Excellent generation conditions</p>
+                    </div>
+
+                    <div class="sunlight-divider"></div>
+
+                    <div class="sunlight-bottom">
+                        <div>
+                            <span>UV index</span>
+                            <strong>6.2</strong>
+                        </div>
+
+                        <div>
+                            <span>Peak hours</span>
+                            <strong>11 AM – 2 PM</strong>
+                        </div>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- QUICK METRICS -->
+            <section class="metrics-grid">
+
+                <article class="metric-card metric-blue"
+                         data-tooltip="Total energy stored across all connected battery units.">
+
+                    <div class="metric-top">
+                        <span class="metric-icon">▤</span>
+                        <span class="metric-trend">↗ 8.4%</span>
+                    </div>
+
+                    <span class="metric-label">ENERGY STORED</span>
+
+                    <div class="metric-value">
+                        3,420 <span>kWh</span>
+                    </div>
+
+                    <div class="metric-progress">
+                        <span style="width:72%"></span>
+                    </div>
+
+                    <span class="metric-note">72% of total capacity</span>
+
+                </article>
+
+
+                <article class="metric-card metric-green"
+                         data-tooltip="Estimated carbon emissions avoided by using clean solar energy.">
+
+                    <div class="metric-top">
+                        <span class="metric-icon">♧</span>
+                        <span class="metric-trend">↗ 14.2%</span>
+                    </div>
+
+                    <span class="metric-label">CO₂ PREVENTED</span>
+
+                    <div class="metric-value">
+                        1.28 <span>tons</span>
+                    </div>
+
+                    <div class="metric-progress">
+                        <span style="width:84%"></span>
+                    </div>
+
+                    <span class="metric-note">84% of monthly target</span>
+
+                </article>
+
+
+                <article class="metric-card metric-orange"
+                         data-tooltip="Number of solar stations currently contributing energy to the network.">
+
+                    <div class="metric-top">
+                        <span class="metric-icon">⌘</span>
+                        <span class="metric-trend neutral">Stable</span>
+                    </div>
+
+                    <span class="metric-label">ACTIVE STATIONS</span>
+
+                    <div class="metric-value">
+                        12 <span>/ 14</span>
+                    </div>
+
+                    <div class="metric-progress">
+                        <span style="width:86%"></span>
+                    </div>
+
+                    <span class="metric-note">2 stations under maintenance</span>
+
+                </article>
+
+            </section>
+
+
+            <!-- PRODUCTION AND PERFORMANCE -->
+            <section class="analytics-grid" id="production">
+
+                <article class="production-card">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-label">GENERATION ANALYTICS</span>
+                            <h2>Energy production</h2>
+                            <p>Track how your network performs over time.</p>
+                        </div>
+
+                        <div class="range-selector" id="rangeSelector">
+                            <button class="range-button active" data-range="day">24H</button>
+                            <button class="range-button" data-range="week">7D</button>
+                            <button class="range-button" data-range="month">30D</button>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-legend">
+                        <span class="legend-mark"></span>
+                        Solar generation
+                        <span class="chart-unit">kWh</span>
+                    </div>
+
+                    <div class="chart-container">
+
+                        <div class="chart-y-labels">
+                            <span>1000</span>
+                            <span>750</span>
+                            <span>500</span>
+                            <span>250</span>
+                            <span>0</span>
+                        </div>
+
+                        <div class="chart-main">
+
+                            <div class="chart-grid-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <svg id="productionChart"
+                                 viewBox="0 0 700 230"
+                                 preserveAspectRatio="none"
+                                 role="img"
+                                 aria-label="Interactive solar production chart">
+
+                                <defs>
+                                    <linearGradient id="areaGradient"
+                                                    x1="0" y1="0"
+                                                    x2="0" y2="1">
+                                        <stop offset="0%"
+                                              stop-color="#A4C96C"
+                                              stop-opacity="0.40"/>
+                                        <stop offset="100%"
+                                              stop-color="#A4C96C"
+                                              stop-opacity="0.01"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <path id="chartArea" fill="url(#areaGradient)"></path>
+
+                                <path id="chartLine"
+                                      fill="none"
+                                      stroke="#527C40"
+                                      stroke-width="3.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"></path>
+
+                                <g id="chartPoints"></g>
+
+                            </svg>
+
+                            <div class="chart-tooltip" id="chartTooltip">
+                                <strong id="tooltipValue">0 kWh</strong>
+                                <span id="tooltipLabel">12:00 PM</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="chart-x-labels" id="chartLabels"></div>
+
+                    <div class="chart-insight">
+                        <span>✳</span>
+                        <p>
+                            <strong>Peak performance:</strong>
+                            Your network performs best between 11 AM and 2 PM.
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <!-- PERFORMANCE BARS -->
+                <article class="performance-card">
+
+                    <div class="section-heading">
+                        <div>
+                            <span class="section-label">TOP PERFORMERS</span>
+                            <h2>Station output</h2>
+                            <p>Today's contribution by station.</p>
+                        </div>
+
+                        <span class="more-button">···</span>
+                    </div>
+
+                    <div class="station-performance" id="stationPerformance">
+
+                        <div class="station-row">
+                            <div class="station-info">
+                                <span class="station-color color-one"></span>
+                                <div>
+                                    <strong>Sunfield North</strong>
+                                    <span>Station 01</span>
+                                </div>
+                            </div>
+                            <strong class="station-number">284 kWh</strong>
+                            <div class="station-track"><span style="width:92%"></span></div>
+                        </div>
+
+                        <div class="station-row">
+                            <div class="station-info">
+                                <span class="station-color color-two"></span>
+                                <div>
+                                    <strong>Green Valley</strong>
+                                    <span>Station 04</span>
+                                </div>
+                            </div>
+                            <strong class="station-number">231 kWh</strong>
+                            <div class="station-track"><span style="width:75%"></span></div>
+                        </div>
+
+                        <div class="station-row">
+                            <div class="station-info">
+                                <span class="station-color color-three"></span>
+                                <div>
+                                    <strong>Solar Ridge</strong>
+                                    <span>Station 08</span>
+                                </div>
+                            </div>
+                            <strong class="station-number">198 kWh</strong>
+                            <div class="station-track"><span style="width:64%"></span></div>
+                        </div>
+
+                        <div class="station-row">
+                            <div class="station-info">
+                                <span class="station-color color-four"></span>
+                                <div>
+                                    <strong>Meadow East</strong>
+                                    <span>Station 11</span>
+                                </div>
+                            </div>
+                            <strong class="station-number">129 kWh</strong>
+                            <div class="station-track"><span style="width:42%"></span></div>
+                        </div>
+
+                    </div>
+
+                    <button class="text-link" id="viewStations">
+                        Explore all stations <span>↗</span>
+                    </button>
+
+                </article>
+
+            </section>
+
+
+            <!-- ENERGY FLOW -->
+            <section class="flow-section" id="energy-flow">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-label">NETWORK DISTRIBUTION</span>
+                        <h2>Where your energy goes.</h2>
+                        <p>A snapshot of today's generated energy distribution.</p>
+                    </div>
+
+                    <span class="flow-date">TODAY / LIVE DATA</span>
+                </div>
+
+                <div class="flow-card">
+
+                    <div class="flow-source">
+                        <div class="flow-source-icon">☼</div>
+                        <div>
+                            <span>GENERATED</span>
+                            <strong>842 <small>kWh</small></strong>
+                        </div>
+                    </div>
+
+                    <div class="flow-connector">
+                        <span></span>
+                        <span class="flow-connector-dot"></span>
+                        <span></span>
+                    </div>
+
+                    <div class="flow-destinations">
+
+                        <div class="flow-destination">
+                            <span class="destination-icon storage-icon">▤</span>
+                            <div>
+                                <strong>Storage</strong>
+                                <span>40% · 337 kWh</span>
+                            </div>
+                            <div class="destination-bar">
+                                <span style="width:40%"></span>
+                            </div>
+                        </div>
+
+                        <div class="flow-destination">
+                            <span class="destination-icon usage-icon">⌂</span>
+                            <div>
+                                <strong>Consumption</strong>
+                                <span>45% · 379 kWh</span>
+                            </div>
+                            <div class="destination-bar">
+                                <span style="width:45%"></span>
+                            </div>
+                        </div>
+
+                        <div class="flow-destination">
+                            <span class="destination-icon grid-icon">⌁</span>
+                            <div>
+                                <strong>Grid export</strong>
+                                <span>15% · 126 kWh</span>
+                            </div>
+                            <div class="destination-bar">
+                                <span style="width:15%"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STATION STATUS -->
+            <section class="station-section" id="stations">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-label">NETWORK OVERVIEW</span>
+                        <h2>Your solar stations.</h2>
+                        <p>Monitor the health of your connected locations.</p>
+                    </div>
+
+                    <span class="station-count">14 TOTAL STATIONS</span>
+                </div>
+
+                <div class="station-grid">
+
+                    <article class="station-card">
+                        <div class="station-card-top">
+                            <span class="station-location-icon">⌂</span>
+                            <span class="status-badge status-online">
+                                <span></span> Online
+                            </span>
+                        </div>
+                        <h3>Sunfield North</h3>
+                        <p>Western Solar Network</p>
+                        <div class="station-card-bottom">
+                            <strong>284 <small>kWh</small></strong>
+                            <span>Station 01</span>
+                        </div>
+                    </article>
+
+                    <article class="station-card">
+                        <div class="station-card-top">
+                            <span class="station-location-icon">⌂</span>
+                            <span class="status-badge status-online">
+                                <span></span> Online
+                            </span>
+                        </div>
+                        <h3>Green Valley</h3>
+                        <p>Central Solar Network</p>
+                        <div class="station-card-bottom">
+                            <strong>231 <small>kWh</small></strong>
+                            <span>Station 04</span>
+                        </div>
+                    </article>
+
+                    <article class="station-card">
+                        <div class="station-card-top">
+                            <span class="station-location-icon">⌂</span>
+                            <span class="status-badge status-maintenance">
+                                <span></span> Maintenance
+                            </span>
+                        </div>
+                        <h3>Hilltop West</h3>
+                        <p>Northern Solar Network</p>
+                        <div class="station-card-bottom">
+                            <strong>— <small>kWh</small></strong>
+                            <span>Station 06</span>
+                        </div>
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                <span>✳ TERRA ENERGY INTELLIGENCE</span>
+                <span>Built for a greener tomorrow.</span>
+                <span>DEMO DATA · 2026</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
